@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stock_info_app/color_schemes.g.dart';
+import 'package:stock_info_app/util/color_schemes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -68,6 +68,22 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
+      ),
+      bottomNavigationBar: NavigationBar(
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.explore),
+            label: 'Explore',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.commute),
+            label: 'Commute',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.bookmark),
+            label: 'Bookmark',
+          ),
+        ],
       ),
     );
   }
