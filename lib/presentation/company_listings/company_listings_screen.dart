@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stock_info_app/presentation/company_listings/company_listingd_veiw_model.dart';
+import 'package:stock_info_app/presentation/company_listings/company_listings_action.dart';
 
 class CompanyListingsScreen extends StatelessWidget {
   const CompanyListingsScreen({Key? key}) : super(key: key);
@@ -16,19 +17,25 @@ class CompanyListingsScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: TextField(
+                onChanged: (query) {
+                  viewModel.onAction(
+                      CompanyListingsAction.onSearchQueryChange(query));
+                },
                 decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Theme.of(context).colorScheme.primary,
                           width: 2.0,
                         ),
-                        borderRadius: BorderRadius.all(Radius.circular(5.0))),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(5.0))),
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Theme.of(context).colorScheme.primary,
                           width: 2.0,
                         ),
-                        borderRadius: BorderRadius.all(Radius.circular(5.0))),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(5.0))),
                     labelText: '검색...',
                     labelStyle: TextStyle(
                         color: Theme.of(context).colorScheme.secondary)),
@@ -36,7 +43,9 @@ class CompanyListingsScreen extends StatelessWidget {
             ),
             Expanded(
               child: RefreshIndicator(
-                onRefresh: () async {},
+                onRefresh: () async {
+                  viewModel.onAction(const CompanyListingsAction.refresh());
+                },
                 child: ListView.builder(
                     itemCount: state.companies.length,
                     itemBuilder: (context, index) {
