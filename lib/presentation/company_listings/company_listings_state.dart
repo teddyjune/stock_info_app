@@ -11,7 +11,7 @@ part 'company_listings_state.g.dart';
 class CompanyListingsState with _$CompanyListingsState {
   const factory CompanyListingsState({
     @Default([]) List<CompanyListing> companies,
-    @Default(false) bool isLoadin,
+    @Default(false) bool isLoading,
     @Default(false) bool isRefreshing,
     @Default('') String searchQuery,
   }) = _CompanyListingsState;
