@@ -19,7 +19,9 @@ class CompanyInfoScreen extends StatelessWidget {
               Center(child: Text(state.errorMessage!)),
             if (state.isLoading)
               const Center(child: CircularProgressIndicator()),
-            if (state.isLoading == false && state.errorMessage == null)
+            if (state.isLoading == false &&
+                state.errorMessage == null &&
+                state.companyInfo != null)
               _buildBody(state.companyInfo!),
           ],
         ),
@@ -31,12 +33,42 @@ class CompanyInfoScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(companyInfo.name),
-          Text(companyInfo.symbol),
-          Text(companyInfo.industry),
-          Text(companyInfo.country),
-          Text(companyInfo.description),
+          Text(
+            companyInfo.name,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Text(
+            companyInfo.symbol,
+            style: const TextStyle(
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+          Text(
+            'Industry: ${companyInfo.industry}',
+            style: const TextStyle(
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Text(
+            'Country: ${companyInfo.country}',
+            style: const TextStyle(
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          const Divider(),
+          Text(
+            companyInfo.description,
+            style: const TextStyle(
+              fontSize: 12,
+            ),
+          ),
+          // Text(companyInfo.description),
         ],
       ),
     );

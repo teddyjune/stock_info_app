@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:stock_info_app/domain/repository/stock_repository.dart';
 import 'package:stock_info_app/presentation/company_info/company_info_screen.dart';
@@ -62,7 +63,7 @@ class CompanyListingsScreen extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(builder: (context) {
                                   final repository =
-                                      context.read<StockRepository>();
+                                      GetIt.instance<StockRepository>();
                                   final symbol = state.companies[index].symbol;
                                   //화면이 전환될 때 프로바이더 세팅
                                   return ChangeNotifierProvider(
