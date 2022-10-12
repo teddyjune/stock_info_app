@@ -39,7 +39,7 @@ class CompanyInfoScreen extends StatelessWidget {
             companyInfo.name,
             style: const TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 18,
+              fontSize: 20,
               overflow: TextOverflow.ellipsis,
             ),
           ),
@@ -65,7 +65,7 @@ class CompanyInfoScreen extends StatelessWidget {
           Text(
             companyInfo.description,
             style: const TextStyle(
-              fontSize: 12,
+              fontSize: 14,
             ),
           ),
           // Text(companyInfo.description),
